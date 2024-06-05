@@ -1,5 +1,5 @@
 import React, {ReactNode} from "react"
-
+import Image from "next/image";
 interface MemberProps {
     children: ReactNode;
     image: string;

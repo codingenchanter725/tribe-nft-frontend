@@ -1,3 +1,4 @@
+
 export default function Logo(){
     return (
         <div className="w-[20%] m-auto mb-[30px] box-border">

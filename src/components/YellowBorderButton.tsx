@@ -1,13 +1,13 @@
+"use client";
 import React, {ReactNode} from "react"
-
 interface ButtonProps {
     children: ReactNode;
-    href: string;
+    href : string,
   }
 
 const YellowBorderButton: React.FC<ButtonProps> = ({ children, href }) => {
     return (
-        <a className="tf-button btn-effect m-[10px]" href={href}>
+        <a className="tf-button btn-effect m-[10px] cursor-pointer" href={href}>
             <span className="boder-fade"></span>
             <span className="effect">
                 {children}

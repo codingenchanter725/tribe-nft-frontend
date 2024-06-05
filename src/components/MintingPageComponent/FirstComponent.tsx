@@ -1,5 +1,4 @@
 import React from "react";
-
 const FirstComponent: React.FC = ( ) => {
     return(
         <div className="text-white flex min-[900px]:flex-row max-[900px]:flex-col relative w-[100%] justify-center items-center box-border px-[20px] pb-[50px] border-b-[1px] border-gray-666">
@@ -19,11 +18,11 @@ const FirstComponent: React.FC = ( ) => {
                 </div>
                 <div className="w-[100%] flex flex-row mt-[100px]">
                     <div className="w-[50%] border-r-[1px] border-gray-666">
-                        <img className="w-[12%]" src="/img/logo.webp" />
+                        <img alt="" className="w-[12%]" src="/img/logo.webp" />
                         <p className="mt-[10px] mb-[20px] text-[17px] font-bold font-chakra">Financial Literacy Token</p>
                     </div>
                     <div className="w-[50%] pl-[50px]">
-                        <img className="w-[12%]" src="/img/bag_music.webp" />
+                        <img alt="" className="w-[12%]" src="/img/bag_music.webp" />
                         <p className="mt-[10px] mb-[20px] text-[17px] font-bold font-chakra">“BAG” Music EP Token</p>
                     </div>
                 </div>

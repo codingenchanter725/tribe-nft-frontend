@@ -11,7 +11,7 @@ const HeaderBgComponent: React.FC = ( ) => {
                 </video>
             </div>
             <div className=" bottom-[50px] absolute w-[100%] flex justify-center">
-                <YellowBorderButton href="#">MINT NOW</YellowBorderButton>
+                <YellowBorderButton href='/mintingPage#mintNow'>MINT NOW</YellowBorderButton>
             </div>
         </div>
     );

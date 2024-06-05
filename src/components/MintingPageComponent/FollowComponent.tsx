@@ -6,7 +6,7 @@ const FollowComponent: React.FC = ( ) => {
             <div className="px-[80px] w-[100%] mx-auto">
                 <div className="min-[900px]:flex min-[900px]:flex-row max-[900px]flex-col: justify-center h-[800px] box-border">
                     <div className="min-[900px]:w-[80%]">
-                        <img src="/img/FP.jpeg" className=" rounded-[20px] min-[900px]:w-[100%] max-[900px]:w-[50%] m-auto" />
+                        <img alt="" src="/img/FP.jpeg" className=" rounded-[20px] min-[900px]:w-[100%] max-[900px]:w-[50%] m-auto" />
                     </div>
                     <div className="flex flex-col text-center self-center">
                         <p className="min-[900px]:mb-[150px]">Follow us on Instagram</p>
@@ -15,7 +15,7 @@ const FollowComponent: React.FC = ( ) => {
                         </a>
                     </div>
                     <div className=" self-end relative min-[900px]:w-[80%] max-[900px]:w-[100%]">
-                        <img src="/img/nft/Judah.gif" className=" max-[900px]:m-auto max-[900px]:w-[70%]" />
+                        <img alt="" src="/img/nft/Judah.gif" className=" max-[900px]:m-auto max-[900px]:w-[70%]" />
                     </div>
                 </div>
             </div>

@@ -13,9 +13,9 @@ const KeyElementsComponent: React.FC = () => {
                 <svg className="animate-rotate max-[900px]:w-[300px] max-[900px]:h-[300px]" width="500px" height="500px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
                     <circle fill="transparent" strokeWidth="0.5" cx="33" cy="33" r="30" stroke="url(#gradient)"/>
                     <linearGradient id="gradient">
-                        <stop offset="50%" stop-color="gold" stop-opacity="1"/>
-                        <stop offset="65%" stop-color="gold" stop-opacity="0.1"/>
-                        <stop offset="100%" stop-color="gold" stop-opacity="0"/>
+                        <stop offset="50%" stopColor="gold" stopOpacity="1"/>
+                        <stop offset="65%" stopColor="gold" stopOpacity="0.1"/>
+                        <stop offset="100%" stopColor="gold" stopOpacity="0"/>
                     </linearGradient>
                 </svg>
             </div>
@@ -24,9 +24,9 @@ const KeyElementsComponent: React.FC = () => {
                 <svg className="animate-rotate max-[900px]:w-[300px] max-[900px]:h-[300px]" width="300px" height="300px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
                     <circle fill="transparent" strokeWidth=".5" cx="33" cy="33" r="30" stroke="url(#gradient)"/>
                     <linearGradient id="gradient">
-                        <stop offset="50%" stop-color="gold" stop-opacity="1"/>
-                        <stop offset="65%" stop-color="gold" stop-opacity=".5"/>
-                        <stop offset="100%" stop-color="gold" stop-opacity="0"/>
+                        <stop offset="50%" stopColor="gold" stopOpacity="1"/>
+                        <stop offset="65%" stopColor="gold" stopOpacity=".5"/>
+                        <stop offset="100%" stopColor="gold" stopOpacity="0"/>
                     </linearGradient>
                 </svg> 
             </div>
@@ -35,9 +35,9 @@ const KeyElementsComponent: React.FC = () => {
                 <svg className="animate-rotate max-[900px]:w-[300px] max-[900px]:h-[300px]" width="600px" height="600px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
                     <circle fill="transparent" strokeWidth=".5" cx="33" cy="33" r="30" stroke="url(#gradient)"/>
                     <linearGradient id="gradient">
-                        <stop offset="50%" stop-color="gold" stop-opacity="1"/>
-                        <stop offset="65%" stop-color="gold" stop-opacity=".5"/>
-                        <stop offset="100%" stop-color="gold" stop-opacity="0"/>
+                        <stop offset="50%" stopColor="gold" stopOpacity="1"/>
+                        <stop offset="65%" stopColor="gold" stopOpacity=".5"/>
+                        <stop offset="100%" stopColor="gold" stopOpacity="0"/>
                     </linearGradient>
                 </svg> 
             </div>
@@ -46,9 +46,9 @@ const KeyElementsComponent: React.FC = () => {
                 <svg className="animate-rotate max-[900px]:w-[300px] max-[900px]:h-[300px]" width="450px" height="450px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
                     <circle fill="transparent" strokeWidth=".5" cx="33" cy="33" r="30" stroke="url(#gradient)"/>
                     <linearGradient id="gradient">
-                        <stop offset="50%" stop-color="gold" stop-opacity="1"/>
-                        <stop offset="65%" stop-color="gold" stop-opacity=".5"/>
-                        <stop offset="100%" stop-color="gold" stop-opacity="0"/>
+                        <stop offset="50%" stopColor="gold" stopOpacity="1"/>
+                        <stop offset="65%" stopColor="gold" stopOpacity=".5"/>
+                        <stop offset="100%" stopColor="gold" stopOpacity="0"/>
                     </linearGradient>
                 </svg> 
             </div>

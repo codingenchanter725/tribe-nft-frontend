@@ -5,7 +5,7 @@ import "swiper/scss";
 import "swiper/scss/pagination";
 
 const CarouselComponent: React.FC = () => {
-  const images = [
+  const imgs = [
     "/img/nft/Asher.webp",
     "/img/nft/Benjamin.webp",
     "/img/nft/Dan.webp",
@@ -28,10 +28,10 @@ const CarouselComponent: React.FC = () => {
           spaceBetween={10}
           pagination={{ clickable: true }}
         >
-          {images.map((imageUrl, index) => (
+          {imgs.map((imgUrl, index) => (
             <SwiperSlide key={index}>
               <div className="w-[100%] h-[190px] flex justify-center items-center p-[30px] border-[2px] border-gray-3636 rounded-[20px]">
-                <img src={imageUrl} className="m-auto w-[100%]" alt="image" />
+                <img src={imgUrl} className="m-auto w-[100%]" alt="img" />
               </div>
             </SwiperSlide>
           ))}
@@ -43,10 +43,10 @@ const CarouselComponent: React.FC = () => {
           spaceBetween={10}
           pagination={{ clickable: true }}
         >
-          {images.map((imageUrl, index) => (
+          {imgs.map((imgUrl, index) => (
             <SwiperSlide key={index}>
               <div className="w-[100%] h-[190px] flex justify-center items-center p-[30px] border-[2px] border-gray-3636 rounded-[20px]">
-                <img src={imageUrl} className="m-auto w-[100%]" alt="image" />
+                <img src={imgUrl} className="m-auto w-[100%]" alt="img" />
               </div>
             </SwiperSlide>
           ))}

@@ -20,7 +20,7 @@ export default function ProphecyComponent () {
                 <section className="w-[100%] px-[20px] pb-[20px] pt-0 mx-0 my-auto">
                 <div className="text-center">
                     <p className="font-chakra font-bold text-[20px] text-white mb-[20px]">Deuteronomy 28 1-15</p>
-                    <div className="h-[60px] overflow-hidden relative mb-[20px] px-[30px] pb-[30px]">
+                    <div className=" relative h-32 overflow-hidden mb-[20px] px-[30px] pb-[30px]">
                         <ul className="m-0 p-0 list-none text-yellow-400 animate-[scrollUp_60s_1s_linear_infinite_forwards]">
                             <li className="list-none">1 Now if you faithfully obey the voice of the LORD your God and are careful to follow all His commandments I am giving you today, the LORD your God will set you high above all the nations of the earth</li>
                             <li className="list-none">2 And all these blessings will come upon you and overtake you, if you will obey the voice of the LORD your God</li>

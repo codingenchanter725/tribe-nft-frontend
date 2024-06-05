@@ -27,7 +27,7 @@ const PricingTableComponent: React.FC = ( ) => {
                                 <p className="mb-[20px] tracking-[1px] text-[20px]">12 Tribes NFT</p>
                             </li>
                         </ul>
-                        <YellowBorderButton href="#">MINT NOW</YellowBorderButton>
+                        <YellowBorderButton href='/mintingPage#mintNow'>MINT NOW</YellowBorderButton>
                     </div>
                 </div>
             </div>

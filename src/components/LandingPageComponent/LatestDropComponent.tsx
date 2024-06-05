@@ -1,7 +1,6 @@
 import Line from "../Line"
 import Drop from "../Drop"
 import YellowBorderButton from "../YellowBorderButton";
-
 export default function LatestDropComponent() {
 
     const drops = [
@@ -35,7 +34,7 @@ export default function LatestDropComponent() {
                     ))}
                 </ul>
                 <div className="text-center mt-[50px] pt-[50px]">
-                    <YellowBorderButton href="#">Mint</YellowBorderButton>
+                    <YellowBorderButton href='/mintingPage#mintNow'>Mint</YellowBorderButton>
                 </div>
             </div>
         </section>
