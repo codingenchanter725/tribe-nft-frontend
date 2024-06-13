@@ -15,10 +15,6 @@ const Header: React.FC = () => {
 		(async () => {
 			try{
 				const metapro = await detectEthereumProvider();
-				if(!metapro){
-					window.open('https://metamask.io/download.html', '_blank');
-					return;
-				}
 				setProvider(metapro);
 			}catch(e){
 				
@@ -29,6 +25,7 @@ const Header: React.FC = () => {
 			provider.on("disconnect", () => {
 				setUser("");
 				localStorage.removeItem('account');
+				localStorage.removeItem("balance");
 			});
 
 			provider.on("accountsChanged", (acc : string) => {
@@ -37,8 +34,8 @@ const Header: React.FC = () => {
 			});
 		}
 		const userStorage = localStorage.getItem('account');
-		userStorage ? setUser(userStorage) : setUser("");
-	}, [provider])
+		userStorage && userStorage != "" ? setUser(userStorage) : setUser("");
+	}, [user])
 
 	const initMetaMask = async () => {
 		if ((user !== '')) {
@@ -54,6 +51,7 @@ const Header: React.FC = () => {
 				const MARKET_Ins = new web3.eth.Contract(CONTRACT_MARKET_ABI, CONTRACT_MARKET_ADDRESS);
 				MARKET_Ins.events.allEvents().on( "data", (data) => {
 					if(data.event == "Minted"){
+
 					}
 				});
 				NFT_Ins.events.allEvents().on( "data", (data) => {
@@ -82,25 +80,27 @@ const Header: React.FC = () => {
 						msg={`MetaMask extension not found`}
 					/>
 				);
+				window.open('https://metamask.io/download.html', '_blank');
 			}
-		} catch (error) {
+		} catch (error : any) {
 			setAccounts([]);
 			toast(
 				<Notification
 					type={"fail"}
-					msg={`Error : ${error}`}
+					msg={`Error : ${error.message}`}
 				/>
 			);
+			
 		} finally {
 			setLoading(false);
 		}
 	};
 
 	return (
-		<header className="flex flex-row items-center w-[100%] h-[100px] text-white px-[30px]">
-			<div className="text-white font-bold font-chakra text-[40px] min-[400px]:mr-[30px]">
+		<header className="flex flex-row items-center justify-center w-[100%] h-[100px] text-white px-[30px]">
+			{/* <div className="text-white font-bold font-chakra text-[40px] min-[400px]:mr-[30px]">
 				LOGO
-			</div>
+			</div> */}
 			<div className="w-[70%]">
 				<div className="w-full block grow min-[1107px]:flex min-[1107px]:items-center min-[1107px]:w-[100%] text-white max-[1107px]:hidden">
 					<div className="min-[1107px]:flex min-[1107px]:flex-row min-[1107px]:justify-between min-[1107px]:w-[100%] text-[17px]">
@@ -155,10 +155,10 @@ const Header: React.FC = () => {
 												</li>
 												<li>
 													<a
-														href="/otherPage/thankyou"
+														href="/otherPage/strategic"
 														className=" transition-all duration-200 hover:text-yellow-300"
 													>
-														Thank you!
+														10 Year Strategic Plan
 													</a>
 												</li>
 											</ul>
@@ -223,6 +223,7 @@ const Header: React.FC = () => {
 														Explore
 													</a>
 												</li>
+												{user && 
 												<li>
 													<a
 														href={`/ownerPage/${user}`}
@@ -231,6 +232,7 @@ const Header: React.FC = () => {
 														My NFT
 													</a>
 												</li>
+												}
 											</ul>
 										</div>
 									</div>
@@ -255,7 +257,7 @@ const Header: React.FC = () => {
 			<div className="w-[150px] cursor-pointer border rounded-[5px] text-center transition-all duration-200 hover:border-yellow-300 mr-[20px]">
 				<h2 className="text-[17px] transition-all duration-200 hover:text-yellow-300">
 					<button onClick={initMetaMask}>
-						{user !== ''
+						{user !== '' && user && user != 'undefined'
 							? `${user.slice(0, 7)}...${user.slice(-5)}`
 							: "Connect Wallet"}
 					</button>
@@ -298,9 +300,11 @@ const Header: React.FC = () => {
 								<li className=" transition-all duration-200 hover:text-yellow-300">
 									<Link href={`/explorerPage`}>Explore</Link>
 								</li>
-								<li className=" transition-all duration-200 hover:text-yellow-300">
-									<Link href={`/ownerPage/${user}`}>My NFT</Link>
-								</li>
+								{user &&
+									<li className=" transition-all duration-200 hover:text-yellow-300">
+										<Link href={`/ownerPage/${user}`}>My NFT</Link>
+									</li>
+								}
 								<li className=" transition-all duration-200 hover:text-yellow-300">
 									<Link href="/#drop">Testimonial</Link>
 								</li>

@@ -1,6 +1,4 @@
 import GalleryContainerCompoent from "@/components/ExplorerPageComponent/GalleryContainerComponent";
-import MostChoosen from "@/components/MostChoosen";
-import IsraelPropechy from "@/components/IsraelPropechy";
 const Home: React.FC = () => {
   return (
     <div className='relative flex z-2 flex-col min-h-[100vh] max-w-[1600px] mx-auto box-border text-white p-2'>
@@ -11,8 +9,6 @@ const Home: React.FC = () => {
           <button className="m-2 h-10 w-32 box-border rounded-lg border-2 border-gray-500 hover:border-green-400">List</button>
         </div>
       </div>
-      {/* <MostChoosen />
-      <IsraelPropechy /> */}
       <GalleryContainerCompoent owner=""/>
     </div>
   );

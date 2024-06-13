@@ -7,13 +7,21 @@ const ImageRotation = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isMove, setIsMove] = useState(false);
-
+  const imageRef = useRef<HTMLImageElement>(null);
   const [scale, setScale] = useState(1);
 
-  const handleWheel = (event: React.WheelEvent<HTMLImageElement>) => {
-    const newScale = scale + (event.deltaY > 0 ? -0.1 : 0.1); // Adjust the zoom scale based on deltaY
-    setScale(Math.max(0.1, Math.min(newScale, 2))); // Limit the zoom scale between 0.1x and 3x
+  const handleWheel = (event: any) => {
+    event.preventDefault();
+    const newScale = event.deltaY > 0 ? -0.1 : 0.1; // Adjust the zoom scale based on deltaY
+    setScale((prScale) => Math.max(0.1, Math.min(prScale + newScale, 10))); // Limit the zoom scale between 0.1x and 3x
   };
+
+  useEffect(() => {
+    const imgElement = imageRef.current;
+    if(imgElement){
+      imgElement.addEventListener("wheel", handleWheel, { passive: false });
+    }
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -24,6 +32,7 @@ const ImageRotation = () => {
         const index =
           Math.floor(mouseX / (containerRect.width / totalImages)) + 1;
         setCurrentImageIndex(Math.min(Math.max(index, 3), totalImages));
+        return;
       }
     };
 
@@ -31,10 +40,8 @@ const ImageRotation = () => {
       setIsDragging(false);
       setIsMove(false);
     };
-
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mousedown", handleMouseUp);
-
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mousedown", handleMouseUp);
@@ -62,6 +69,7 @@ const ImageRotation = () => {
         src={`/map/12-Tribes-3D- (${currentImageIndex}).png`}
         width="70%"
         alt="Zoomable Image"
+        ref={imageRef}
         style={{
           transform: `scale(${scale})`,
           margin: "auto",
@@ -69,7 +77,6 @@ const ImageRotation = () => {
           position: "relative",
           cursor: isDragging ? "grabbing" : "grab",
         }}
-        onWheel={handleWheel} // Attach the wheel event handler to the image element
       />
     </div>
   );

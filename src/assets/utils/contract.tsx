@@ -113,11 +113,11 @@ const returnMultipleCall = async (type: string, param: string): Promise<any> => 
             />
         );
         return result;
-    } catch (e) {
+    } catch (e : any) {
         toast(
             <Notification
                 type={"fail"}
-                msg={`Check wallet connection${e}`}
+                msg={`Check wallet connection${e.message}`}
             />
         );
         return result;
@@ -167,11 +167,11 @@ const voidMultipleCall = async (type: string, param: string) => {
                     msg={`${message}`}
                 />
             );
-        } catch (e) {
+        } catch (e : any) {
             toast(
                 <Notification
                     type={"fail"}
-                    msg={`${e}`}
+                    msg={`${e.message}`}
                 />
             );
         }

@@ -4,24 +4,24 @@ import Member from "../Member";
 
 const TeamMembersComponent: React.FC = () => {
   const members = [
-    {
-      mail: "@cg_que",
-      name: "Artist",
-      img: "/img/Artist.png",
-      insta: "https://instagram.com/cg__que?igshid=ODBkMDk1MTU",
-    },
+    // {
+    //   mail: "@cg_que",
+    //   name: "Artist",
+    //   img: "/img/Artist.png",
+    //   insta: "https://instagram.com/cg__que?igshid=ODBkMDk1MTU",
+    // },
     {
       mail: "@BMB_funding",
       name: "Financial Prophet",
       img: "/img/FP.jpeg",
       insta: "https://instagram.com/bmb_funding?igshid=ODBkMDk1MTU=",
     },
-    {
-      mail: "@noeaze",
-      name: "Bankruptcy Specialist",
-      img: "/img/BS.jpg",
-      insta: "https://instagram.com/noeaze?igshid=ODBkMDk1MTU=",
-    },
+    // {
+    //   mail: "@noeaze",
+    //   name: "Bankruptcy Specialist",
+    //   img: "/img/BS.jpg",
+    //   insta: "https://instagram.com/noeaze?igshid=ODBkMDk1MTU=",
+    // },
     {
       mail: "@anavieltheservant",
       name: "Artist",

@@ -28,7 +28,7 @@ const SaltlComponent: React.FC = () => {
       <h2 className="text-[50px] font-chakra font-bold mb-[20px]">
         SALT OF THE <span className="text-yellow-500 inline-block"> EARTH</span>
       </h2>
-      <a href="https://opensea.io/collection/12tribes-io">
+      <a href="https://testnets.opensea.io/collection/tribenft-4">
         <button className="bg-gradient-to-r from-yellow-300 to-yellow-500 font-chakra text-black font-bold rounded-[10px] px-[30px] py-[15px] text-[16px]">
           See All
         </button>

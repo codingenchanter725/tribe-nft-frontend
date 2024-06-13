@@ -12,7 +12,7 @@ const OwnerComponent: React.FC<OwnerProps> = ({ owner }) => {
     useEffect(() => {
         const isClient = typeof window !== 'undefined';
         const storage = isClient ? localStorage.getItem('account') : null;
-        setEndpix(storage && owner === storage ? `${owner}(YOU)` : owner)
+        setEndpix(storage && owner === storage ? `${owner}(YOU)` : owner);
     })
     return (
         <div className='relative flex z-2 flex-col min-h-[100vh] box-border text-white p-2 max-w-[1600px] m-auto'>
