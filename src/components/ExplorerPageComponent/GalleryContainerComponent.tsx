@@ -3,14 +3,16 @@ import React, { useState, useEffect } from 'react';
 import SearchButtonComponent from './SearchButtonComponent';
 import SearchHeaderComponent from './SearchHeaderComponent';
 import GalleryComponent from './GalleryComponent';
-import SearchSideBarComponent from './SearchSideBarComponent';
+import SearchSideBarComponent, { filterProps } from './SearchSideBarComponent';
 import DetailComponent from './DetailComponent';
 import { getAllData } from '@/assets/utils/contract';
 export interface itemProps {
     token_id: string,
     owner: string,
+    seller : string;
     price: string,
     description: string,
+    attribute : any[],
     image: string,
     listed : boolean,
 }
@@ -23,19 +25,26 @@ const GalleryContainerCompoent: React.FC<galleryContainerProps> = ({owner}) => {
     const [detailFlag, setDetailFlag] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
     const [key, setKey] = useState<string>("");
-    const [isBuy, setIsBuy] = useState<boolean>(false);
-    const [isList, setIsList] = useState<boolean>(false);
-    const [selectedData, setSelectedData] = useState<itemProps>({owner : "", listed : false, token_id : "", price :"", description : "", image : ""});
+    const [selectedData, setSelectedData] = useState<itemProps>({owner : "", seller : "", listed : false, token_id : "", attribute : [],  price :"", description : "", image : ""});
     const [data, setData] = useState<itemProps[]>([]);
-
+    const [filterData, setFilterData] = useState<filterProps[]>([]);
     useEffect(() => {
        fetchMoreData();
     }, []);
     
+    useEffect(() => {
+        if(!searchView)setData(allData);
+    }, [searchView]);
+
     const fetchMoreData = async () => {
         setData([]);
         setLoading(true);
-        allData = await getAllData(owner);
+        const storage: any = localStorage.getItem("account");
+        allData = await getAllData( 
+            owner == storage && 
+            !(!storage || storage == "" || storage == "undefined") 
+            ? owner + ":true" : owner 
+        );
         setData(allData);
         setLoading(false);
     };
@@ -45,19 +54,30 @@ const GalleryContainerCompoent: React.FC<galleryContainerProps> = ({owner}) => {
     }
     const keySearch = (keyword : string) => {
         setKey(keyword);
-        dataFilterFun(keyword, isBuy, isList);
+        dataFilterFun(keyword, filterData);
     }
-    const listFilter = (isBuyNow : boolean, isListed : boolean ) => {
-        setIsBuy(isBuyNow);
-        setIsList(isListed);
-        dataFilterFun(key, isBuyNow, isListed);
+    const listFilter = (sub_comp_filter_list : filterProps[] ) => {
+        setFilterData(sub_comp_filter_list);
+        dataFilterFun(key, sub_comp_filter_list);
     }
-    const dataFilterFun = (param1: string, param2 : boolean, param3 : boolean) => {
+    const dataFilterFun = (param1: string, filter : filterProps[]) => {
         setData(allData.filter(item => {
-            const filterListed = item.listed === param3;
             const ownerIncludesOwner = item.owner.includes(param1);
-            const ownerIncludesDesc = item.description.includes(param1);
-            return filterListed && (param1 === "" ? true : ownerIncludesOwner || ownerIncludesDesc) ;
+            const exist_attr = item.attribute.map(attr_item => {
+                const filterArray = filter.map(filter_item =>{
+                    const sub_arry =  filter_item.data.map(data_item => {
+                        // console.log(attr_item.trait_type, "<--->" ,filter_item.name , " :::" ,attr_item.value, "<-->", data_item.title);
+                        return attr_item.trait_type == filter_item.name && attr_item.value == data_item.title;
+                    });
+                    // console.log("every ---> ", sub_arry);
+                    return sub_arry.reduce((accumulator, currentValue) => accumulator || currentValue, false);
+                    
+                })
+                // console.log('item, all filter', filterArray);
+                return filterArray.reduce((accumulator, currentValue) => accumulator || currentValue, false);
+            });
+            // console.log("exist", exist_attr);
+            return filter.length > 0 ? exist_attr.reduce((accumulator, currentValue) => accumulator || currentValue, false) && (param1 === "" ? true : ownerIncludesOwner)  : true && (param1 === "" ? true : ownerIncludesOwner);
         }));
     }
     return (
@@ -65,7 +85,7 @@ const GalleryContainerCompoent: React.FC<galleryContainerProps> = ({owner}) => {
         
             {
                 detailFlag ? (
-                    <DetailComponent listed={selectedData.listed} setDetailFlag={setDetailFlag} owner={selectedData.owner} token_id={selectedData.token_id} image={selectedData.image} price={selectedData.price} description={selectedData.description} />
+                    <DetailComponent listed={selectedData.listed} setDetailFlag={setDetailFlag} seller = {selectedData.seller} owner={selectedData.owner} token_id={selectedData.token_id} image={selectedData.image} price={selectedData.price} description={selectedData.description} />
                 ) :
                     (
                         <>
@@ -93,7 +113,7 @@ const GalleryContainerCompoent: React.FC<galleryContainerProps> = ({owner}) => {
                                         </div>
                                     </div>
                                 ) : (
-                                    <div className='flex'>
+                                    <div className="w-[100vw]">
                                         <GalleryComponent galleryitems={data} setDetailView={setDetailView} width="25" />
                                     </div>
                                 )

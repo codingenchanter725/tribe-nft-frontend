@@ -44,7 +44,6 @@ const returnMultipleCall = async (type: string, param: string): Promise<any> => 
                 const total = await NFT_Ins.methods.totalSupply().call();
                 for (let i = 1; i <= Number(total); i++) {
                     const owner: any = await NFT_Ins.methods.ownerOf(i).call();
-                    const listed = await NFT_Ins.methods.listed(i).call();
                     let tokenURI: string = await NFT_Ins.methods.tokenURI(i).call();
                     let regex = /\/\d+$/;
                     tokenURI = tokenURI.replace("ipfs://", "https://ipfs.io/ipfs/");
@@ -55,6 +54,8 @@ const returnMultipleCall = async (type: string, param: string): Promise<any> => 
                     let price = priceBigInt ? parseFloat(priceBigInt.toString()) / Math.pow(10, 18) : 0.0;
                     let listing: any = await MARKET_Ins.methods.tokenIdToListing(i).call();
                     priceBigInt = listing.price;
+                    const listed : boolean = listing.active;
+                    const seller : string = listing.seller;
                     let priceList = priceBigInt ? parseFloat(priceBigInt.toString()) / Math.pow(10, 18) : 0.0;
                     price = Math.round(price * 1000) / 1000;
                     let tokenTransferEvents;
@@ -68,9 +69,18 @@ const returnMultipleCall = async (type: string, param: string): Promise<any> => 
                         console.error('Error fetching token transfer events:', error);
                     }
 
-                    if (param !== '' && param !== owner.toString()) continue;
+                    if (param !== ''){
+                        if(param.indexOf(":") > 0){
+                            if(owner.toString() != param.split(":")[0])continue;
+                        }else {
+                            if(!listed)continue;
+                        }
+                    }
+                    
+                    if (param == '' && !listed) continue;
                     tokenArray.push({
                         token_id: i,
+                        seller : seller,
                         price: listed ? priceList : price,
                         name: metadata.name,
                         image: metadata.image.replace("ipfs://", "https://ipfs.io/ipfs/"),

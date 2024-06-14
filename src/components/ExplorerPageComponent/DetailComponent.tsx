@@ -12,9 +12,10 @@ export interface DetailProps {
     description: string,
     image: string,
     listed : boolean,
+    seller : string,
 }
 
-const DetailComponent: React.FC<DetailProps> = ({ setDetailFlag,listed,  owner, token_id, price, description, image }) => {
+const DetailComponent: React.FC<DetailProps> = ({ setDetailFlag,listed, seller, owner, token_id, price, description, image }) => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [isListModalOpen, setIsListModalOpen] = useState<boolean>(false);
     const [currentUSD, setCurrentUSD] = useState<number>(0.0);
@@ -27,6 +28,7 @@ const DetailComponent: React.FC<DetailProps> = ({ setDetailFlag,listed,  owner, 
     const openModal = () => setIsModalOpen(true);
     const openListModal = () => setIsListModalOpen(true);
     const shortOwner = `${owner.slice(0, 7)}...${owner.slice(-5)}`; 
+    const shortSeller = `${seller.slice(0, 7)}...${seller.slice(-5)}`; 
     
     const closeModal = () => setIsModalOpen(false);
     const closeListModal = () => setIsListModalOpen(false);
@@ -99,7 +101,7 @@ const DetailComponent: React.FC<DetailProps> = ({ setDetailFlag,listed,  owner, 
                             <div>Token Standard</div><div>ERC-721</div>
                         </div>
                         <div className="h-10 mt-2 cursor-pointer" >
-                            <a href={`/ownerPage/${owner}`} target='_blank'>Owner : {shortOwner} {owner === localStorage.getItem('account') ? `(YOU)` : "" }</a>
+                            <a href={`/ownerPage/${seller}`} target='_blank'>Seller : {shortSeller} {seller === localStorage.getItem('account') ? `(YOU)` : "" }</a>
                         </div>
                         <div className="top-0 bottom left-0 box box-border border border-[#42E8E0] w-[100%]bg-gradient-to-b from-[#BC2CD80F] to-[#00DC9F4D]">
                             <div className="flex h-20 box box-border border-b w-[100%] justify-between bg-gradient-to-r from-[#544bb128] to-[#e4cb5128]">

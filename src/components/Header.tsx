@@ -187,58 +187,11 @@ const Header: React.FC = () => {
 								Masterclass
 							</span>
 						</Link>
-						<span className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4 transition-all duration-200 hover:text-yellow-300">
-							<div className="relative flex flex-col justify-center">
-								<div className="relative items-center mx-auto">
-									<div
-										id="bouton"
-										className="relative group/bouton flex flex-row items-center"
-									>
-										<button className="relative text-white transition-all duration-200 hover:text-yellow-300">
-											NFT
-										</button>
-										<div className="text-white">
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												fill="none"
-												viewBox="0 0 24 24"
-												strokeWidth="1.5"
-												stroke="currentColor"
-												className="w-4 h-4 font-b group-hover/bouton:rotate-90 transition-all duration-200 hover:text-yellow-300"
-											>
-												<path
-													strokeLinecap="round"
-													strokeLinejoin="round"
-													d="m8.25 4.5 7.5 7.5-7.5 7.5"
-												/>
-											</svg>
-										</div>
-										<div className="absolute top-full w-24 text-white origine-top opacity-0 hidden flex-col group-hover/bouton:flex group-hover/bouton:opacity-100 transition-all border-white border rounded-[5px] bg-header z-10">
-											<ul className="text-center p-[10px] text-[15px]">
-												<li>
-													<a
-														href="/explorerPage"
-														className=" transition-all duration-200 hover:text-yellow-300"
-													>
-														Explore
-													</a>
-												</li>
-												{user && 
-												<li>
-													<a
-														href={`/ownerPage/${user}`}
-														className=" transition-all duration-200 hover:text-yellow-300"
-													>
-														My NFT
-													</a>
-												</li>
-												}
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						</span>
+						<Link href="/explorerPage">
+							<span className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4 transition-all duration-200 hover:text-yellow-300">
+								MarketPlace
+							</span>
+						</Link>
 						<Link href="/#drop">
 							<span className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4 transition-all duration-200 hover:text-yellow-300">
 								Testimonial
@@ -300,11 +253,6 @@ const Header: React.FC = () => {
 								<li className=" transition-all duration-200 hover:text-yellow-300">
 									<Link href={`/explorerPage`}>Explore</Link>
 								</li>
-								{user &&
-									<li className=" transition-all duration-200 hover:text-yellow-300">
-										<Link href={`/ownerPage/${user}`}>My NFT</Link>
-									</li>
-								}
 								<li className=" transition-all duration-200 hover:text-yellow-300">
 									<Link href="/#drop">Testimonial</Link>
 								</li>

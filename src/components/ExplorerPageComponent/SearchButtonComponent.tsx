@@ -17,7 +17,7 @@ const SearchButtonComponent : React.FC<SearchButtonProps> = ({setSearchView, key
         }
     }
     return (
-        <div className="max-w-md mx-auto">
+        <div className="w-[40vw] mx-auto">
             <div className="relative">
                 <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                     <svg className="h-5 w-5 text-white-300"  
@@ -36,7 +36,7 @@ const SearchButtonComponent : React.FC<SearchButtonProps> = ({setSearchView, key
                     ref={keywordRef}
                     type="search" 
                     id="default-search" 
-                    className="block w-full p-4 ps-10 text-sm text-white-900 border rounded-lg focus:ring-blue-500 focus:border-blue-500 bg-transparent border-gray-600 placeholder-gray-400" 
+                    className="block w-full p-2 ps-10 text-sm text-white-900 border rounded-lg  focus:border-yellow-300 bg-transparent border-gray-600 placeholder-gray-400" 
                     placeholder="Search NFT..." 
                     required />
             </div>
